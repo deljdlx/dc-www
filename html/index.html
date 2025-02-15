@@ -1,0 +1,319 @@
+<!doctype html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+<title>JLB, get your own web ninja !</title>
+<style>
+
+html, body {
+	margin: 0;
+	height:100%;
+	width:100%;
+	
+	overflow:hidden;
+	
+	
+	font-family: arial;
+}
+
+
+#container {
+	position: relative;
+	height:100%;
+	width:100%;
+	
+	overflow:hidden;
+
+	background: #101727; /* Old browsers */
+	background: -moz-linear-gradient(top,  #101727 0%, #233645 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#101727), color-stop(100%,#233645)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #101727 0%,#233645 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #101727 0%,#233645 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #101727 0%,#233645 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #101727 0%,#233645 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#101727', endColorstr='#233645',GradientType=0 ); /* IE6-9 */
+}
+
+
+#moon {
+
+	position: absolute;
+	height:50%;
+	background-color:#FFA;
+	border-radius:100%;
+	box-shadow: 0 0 50px #FFF;
+	
+	left:50%;
+	margin-left:-400px;
+	top:100%;
+	margin-top:-750px;
+	z-index:10;
+}
+
+
+.hill {
+	position: absolute;
+	width:200%;
+	margin-left:-50%;
+	border-radius:100%;
+	background-color:#000;
+	top:100%;
+	z-index:20;
+}
+
+
+
+#ninja {
+	position: absolute;
+	
+	width:300px;
+	height:300px;
+	top:100%;
+	left:50%;
+	
+	transform-origin: 0 0;
+	-webkit-transform-origin: 0 0;
+	z-index:20;
+}
+
+
+#ninja div {
+	position: absolute;
+}
+
+	#body {
+		font-weight: bold;
+		font-size:80px;
+	}
+	
+	#hat {
+		border: solid 40px #000;
+		background-color:transparent;
+		width:0px;
+		height:0px;
+		
+		border-top:solid transparent 40px;
+		border-left:solid transparent 70px;
+		border-right:solid transparent 70px;
+		
+		top:-83px;
+		left:-35px;
+		
+		transform: rotate(-5deg);
+	}
+	
+	#head {
+		top:-30px;
+		width:50px;
+		height:50px;
+		background-color:#000;
+		border-radius:100%;
+	}
+	
+	#leg_0 {
+		font-weight: bold;
+		font-size:80px;
+		top:43px;
+		left:-2px;
+	}
+
+	
+	#leg_1 {
+		top: 55px;
+		left:-30px;
+		background-color:#000;
+		width:9px;
+		height:80px;
+		transform: rotate(50deg);
+		-webkit-transform: rotate(50deg);
+	}
+	
+	#arm_0 {
+		top: 35px;
+		left:-38px;
+		background-color:#000;
+		width:55px;
+		height:8px;
+		
+		transform: rotate(-10deg);
+		-webkit-transform: rotate(-10deg);
+		display:none;
+	}
+	
+	
+	#arm_1 {
+		top: -12px;
+		left:-30px;
+
+		font-weight: bold;
+		font-size:80px;
+	}
+	
+	.star {
+		color:rgba(255,255,255,0.9);
+		position: absolute;
+		z-index:1;
+	}
+
+
+</style>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script>
+/*
+ Shadow animation 1.11
+ http://www.bitstorm.org/jquery/shadow-animation/
+ Copyright 2011, 2013 Edwin Martin <edwin@bitstorm.org>
+ Contributors: Mark Carver, Xavier Lepretre and Jason Redding
+ Released under the MIT and GPL licenses.
+*/
+'use strict';jQuery(function(h){function r(b,m,d){var l=[];h.each(b,function(f){var g=[],e=b[f];f=m[f];e.b&&g.push("inset");"undefined"!==typeof f.left&&g.push(parseFloat(e.left+d*(f.left-e.left))+"px "+parseFloat(e.top+d*(f.top-e.top))+"px");"undefined"!==typeof f.blur&&g.push(parseFloat(e.blur+d*(f.blur-e.blur))+"px");"undefined"!==typeof f.a&&g.push(parseFloat(e.a+d*(f.a-e.a))+"px");if("undefined"!==typeof f.color){var p="rgb"+(h.support.rgba?"a":"")+"("+parseInt(e.color[0]+d*(f.color[0]-e.color[0]),
+10)+","+parseInt(e.color[1]+d*(f.color[1]-e.color[1]),10)+","+parseInt(e.color[2]+d*(f.color[2]-e.color[2]),10);h.support.rgba&&(p+=","+parseFloat(e.color[3]+d*(f.color[3]-e.color[3])));g.push(p+")")}l.push(g.join(" "))});return l.join(", ")}function q(b){function m(){var a=/^inset\b/.exec(b.substring(c));return null!==a&&0<a.length?(k.b=!0,c+=a[0].length,!0):!1}function d(){var a=/^(-?[0-9\.]+)(?:px)?\s+(-?[0-9\.]+)(?:px)?(?:\s+(-?[0-9\.]+)(?:px)?)?(?:\s+(-?[0-9\.]+)(?:px)?)?/.exec(b.substring(c));
+return null!==a&&0<a.length?(k.left=parseInt(a[1],10),k.top=parseInt(a[2],10),k.blur=a[3]?parseInt(a[3],10):0,k.a=a[4]?parseInt(a[4],10):0,c+=a[0].length,!0):!1}function l(){var a=/^#([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})/.exec(b.substring(c));if(null!==a&&0<a.length)return k.color=[parseInt(a[1],16),parseInt(a[2],16),parseInt(a[3],16),1],c+=a[0].length,!0;a=/^#([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])/.exec(b.substring(c));if(null!==a&&0<a.length)return k.color=[17*parseInt(a[1],16),17*parseInt(a[2],
+16),17*parseInt(a[3],16),1],c+=a[0].length,!0;a=/^rgb\(\s*([0-9\.]+)\s*,\s*([0-9\.]+)\s*,\s*([0-9\.]+)\s*\)/.exec(b.substring(c));if(null!==a&&0<a.length)return k.color=[parseInt(a[1],10),parseInt(a[2],10),parseInt(a[3],10),1],c+=a[0].length,!0;a=/^rgba\(\s*([0-9\.]+)\s*,\s*([0-9\.]+)\s*,\s*([0-9\.]+)\s*,\s*([0-9\.]+)\s*\)/.exec(b.substring(c));return null!==a&&0<a.length?(k.color=[parseInt(a[1],10),parseInt(a[2],10),parseInt(a[3],10),parseFloat(a[4])],c+=a[0].length,!0):!1}function f(){var a=/^\s+/.exec(b.substring(c));
+null!==a&&0<a.length&&(c+=a[0].length)}function g(){var a=/^\s*,\s*/.exec(b.substring(c));return null!==a&&0<a.length?(c+=a[0].length,!0):!1}function e(a){if(h.isPlainObject(a)){var b,e,c=0,d=[];h.isArray(a.color)&&(e=a.color,c=e.length);for(b=0;4>b;b++)b<c?d.push(e[b]):3===b?d.push(1):d.push(0)}return h.extend({left:0,top:0,blur:0,spread:0},a)}for(var p=[],c=0,n=b.length,k=e();c<n;)if(m())f();else if(d())f();else if(l())f();else if(g())p.push(e(k)),k={};else break;p.push(e(k));return p}h.extend(!0,
+h,{support:{rgba:function(){var b=h("script:first"),m=b.css("color"),d=!1;if(/^rgba/.test(m))d=!0;else try{d=m!==b.css("color","rgba(0, 0, 0, 0.5)").css("color"),b.css("color",m)}catch(l){}b.removeAttr("style");return d}()}});var s=h("html").prop("style"),n;h.each(["boxShadow","MozBoxShadow","WebkitBoxShadow"],function(b,h){if("undefined"!==typeof s[h])return n=h,!1});n&&(h.Tween.propHooks.boxShadow={get:function(b){return h(b.elem).css(n)},set:function(b){var m=b.elem.style,d=q(h(b.elem)[0].style[n]||
+h(b.elem).css(n)),l=q(b.end),f=Math.max(d.length,l.length),g;for(g=0;g<f;g++)l[g]=h.extend({},d[g],l[g]),d[g]?"color"in d[g]&&!1!==h.isArray(d[g].color)||(d[g].color=l[g].color||[0,0,0,0]):d[g]=q("0 0 0 0 rgba(0,0,0,0)")[0];b.run=function(b){b=r(d,l,b);m[n]=b}}})});
+
+</script>
+
+
+<body>
+
+
+
+<div id="container">
+
+	<div id="moon"></div>
+	<div class="hill"></div>
+
+	<div id="ninja">
+		<div id="body">/</div>
+		<div id="hat"></div>
+		<div id="head"></div>
+		<div id="leg_0">></div>
+		<div id="leg_1"></div>
+		
+		<!--<div id="arm_0"></div>//-->
+		<div id="arm_1">~</div>
+		
+	</div>
+</div>
+
+
+<script>
+jQuery(function() {
+	adjust();
+	jQuery(window).resize(function() {
+		adjust();
+	});
+});
+
+
+function adjust() {
+
+	jQuery('.hill').css({
+		height: jQuery('.hill').get(0).offsetWidth
+	});
+	
+	var hillOffet=document.body.offsetHeight*-0.15;
+	
+	jQuery('.hill').css({
+		'margin-top': hillOffet
+	});	
+	
+
+	jQuery('#moon').css({
+		width: jQuery('#moon').get(0).offsetHeight,
+		'margin-top':jQuery('#moon').get(0).offsetHeight*-1.2,
+	});
+	jQuery('#moon').css({
+		'margin-left': jQuery('#moon').get(0).offsetWidth/-2
+	});
+
+	
+	var scale=jQuery('#moon').get(0).offsetWidth/500;
+	
+	jQuery('#ninja').css({
+		'transform': 'scale('+scale+')',
+		'-webkit-transform': 'scale('+scale+')'
+	});	
+
+	var ninjaNode=jQuery('#ninja').get(0);
+	
+
+
+	jQuery('#ninja').css({
+		'margin-top': 280*scale*-1
+	});
+}
+
+
+
+function moonlight(fade) {
+	if(fade>0) {
+		jQuery('#moon').animate({
+			'boxShadow':  '0 0 20px #FFF'
+		}, 5000, function() {
+			moonlight(fade*-1);
+		});
+	}
+	else {
+		jQuery('#moon').animate({
+			'boxShadow':  '0 0 80px #FFF'
+		}, 5000, function() {
+			moonlight(fade*-1);
+		});
+	}
+}
+
+moonlight(-1);
+
+
+function Star()
+{
+
+	this.x=Math.random()*document.body.offsetWidth;
+	this.y=Math.random()*document.body.offsetHeight;
+}
+Star.prototype.render=function(container) {
+	this.element=document.createElement('div');
+	this.element.className='star';
+	this.element.innerHTML='*';
+	this.element.style.left=this.x+'px';
+	this.element.style.top=this.y+'px';
+	container.appendChild(this.element);
+	
+	this.shine(-1);
+}
+
+Star.prototype.shine=function(shine) {
+	var self=this;
+	if(shine>0) {
+		jQuery(this.element).animate({
+			'opacity':  '1'
+		}, 5000*Math.random(), function() {
+			self.shine(shine*-1);
+		});
+	}
+	else {
+		jQuery(this.element).animate({
+			'opacity':  '0.2'
+		}, 5000*Math.random(), function() {
+			self.shine(shine*-1);
+		});
+	}
+}
+
+
+for(var i=0; i<50; i++) {
+	var star=new Star();
+	star.render(jQuery('#container').get(0));
+}
+
+</script>
+
+
+
+</body>
+</head>

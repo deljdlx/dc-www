@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+  www:
+    image: nginx:alpine  # 🔥 Image ultra légère
+    restart: always
+    volumes:
+      - "./html:/usr/share/nginx/html:ro"  # Monte notre fichier HTML dans Nginx
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.www.rule=Host(\"${DOMAIN}\")"
+      - "traefik.http.routers.www.entrypoints=websecure"
+      - "traefik.http.routers.www.tls.certresolver=myresolver"
+    networks:
+      - web
+
+networks:
+  web:
+    name: web
+    external: true
