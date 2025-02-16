@@ -253,26 +253,22 @@ h(b.elem).css(n)),l=q(b.end),f=Math.max(d.length,l.length),g;for(g=0;g<f;g++)l[g
 
 
 <script>
-jQuery(function() {
+
+document.addEventListener('DOMContentLoaded', function() {
 	adjust();
-	jQuery(window).resize(function() {
-		adjust();
-	});
+	window.onresize = function() {
+	adjust();
+};
 });
 
 
-function adjust() {
 
-	jQuery('.hill').css({
-		height: jQuery('.hill').get(0).offsetWidth
-	});
-	
-	var hillOffet=document.body.offsetHeight*-0.15;
-	
-	jQuery('.hill').css({
-		'margin-top': hillOffet
-	});	
-	
+function adjust() {
+	const hillOffet=document.body.offsetHeight*-0.15;
+	const hill = document.querySelector('.hill')
+	hill.style.height=hill.offsetWidth+'px';
+	hill.style.marginTop=hillOffet+'px';
+
 
 	jQuery('#moon').css({
 		width: jQuery('#moon').get(0).offsetHeight,
@@ -298,27 +294,6 @@ function adjust() {
 		'margin-top': 280*scale*-1
 	});
 }
-
-
-
-// function moonlight(fade) {
-// 	if(fade>0) {
-// 		jQuery('#moon').animate({
-// 			'boxShadow':  '0 0 20px #FFF'
-// 		}, 5000, function() {
-// 			moonlight(fade*-1);
-// 		});
-// 	}
-// 	else {
-// 		jQuery('#moon').animate({
-// 			'boxShadow':  '0 0 80px #FFF'
-// 		}, 5000, function() {
-// 			moonlight(fade*-1);
-// 		});
-// 	}
-// }
-
-// moonlight(-1);
 
 
 class Star
