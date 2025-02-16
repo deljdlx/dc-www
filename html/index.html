@@ -148,12 +148,49 @@ html, body {
 		font-weight: bold;
 		font-size:80px;
 	}
-	
-	.star {
-		color:rgba(255,255,255,0.9);
-		position: absolute;
-		z-index:1;
-	}
+
+
+/* Générer des valeurs différentes avec nth-child */
+.star:nth-child(n) {
+	--random: 0.5;
+}
+
+.star:nth-child(2n) {
+	--random: 0.6;
+}
+
+.star:nth-child(3n) {
+	--random: 0.7;
+}
+
+.star:nth-child(4n) {
+	--random: 0.8;
+}
+
+.star:nth-child(5n) {
+	--random: 0.9;
+}
+
+.star:nth-child(6n) {
+	--random: 1.0;
+}
+
+
+
+.star {
+	opacity: 0.2;
+    color: rgba(255,255,255,0.9);
+    position: absolute;
+    z-index: 1;
+    transition: all 1s;
+    animation: shine calc(var(--random) * 5s) infinite;
+}
+
+@keyframes shine {
+    0% { opacity: 0.2; }
+    50% { opacity: 1; }
+    100% { opacity: 0.2; }
+}
 
 
 </style>
@@ -270,38 +307,22 @@ function moonlight(fade) {
 moonlight(-1);
 
 
-function Star()
+class Star
 {
 
-	this.x=Math.random()*document.body.offsetWidth;
-	this.y=Math.random()*document.body.offsetHeight;
-}
-Star.prototype.render=function(container) {
-	this.element=document.createElement('div');
-	this.element.className='star';
-	this.element.innerHTML='*';
-	this.element.style.left=this.x+'px';
-	this.element.style.top=this.y+'px';
-	container.appendChild(this.element);
-	
-	this.shine(-1);
-}
-
-Star.prototype.shine=function(shine) {
-	var self=this;
-	if(shine>0) {
-		jQuery(this.element).animate({
-			'opacity':  '1'
-		}, 5000*Math.random(), function() {
-			self.shine(shine*-1);
-		});
+	constructor() {
+		this.x=Math.random()*document.body.offsetWidth;
+		this.y=Math.random()*document.body.offsetHeight;
 	}
-	else {
-		jQuery(this.element).animate({
-			'opacity':  '0.2'
-		}, 5000*Math.random(), function() {
-			self.shine(shine*-1);
-		});
+
+	render(container) {
+		this.element=document.createElement('div');
+		this.element.className='star';
+		this.element.innerHTML='*';
+		this.element.style.left=this.x+'px';
+		this.element.style.top=this.y+'px';
+		container.appendChild(this.element);
+
 	}
 }
 
