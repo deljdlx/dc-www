@@ -1,214 +1,207 @@
 <!doctype html>
 <head>
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
-<title>JLB, get your own web ninja !</title>
-<style>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+	<title>JLB, get your own web ninja !</title>
+	<style>
 
-html, body {
-	margin: 0;
-	height:100%;
-	width:100%;
-	
-	overflow:hidden;
-	
-	
-	font-family: arial;
-}
+		html, body {
+			margin: 0;
+			height:100%;
+			width:100%;
+
+			overflow:hidden;
 
 
-#container {
-	position: relative;
-	height:100%;
-	width:100%;
-	
-	overflow:hidden;
-
-	background: #101727; /* Old browsers */
-	background: -moz-linear-gradient(top,  #101727 0%, #233645 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#101727), color-stop(100%,#233645)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #101727 0%,#233645 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #101727 0%,#233645 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #101727 0%,#233645 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #101727 0%,#233645 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#101727', endColorstr='#233645',GradientType=0 ); /* IE6-9 */
-}
+			font-family: arial;
+		}
 
 
-/* ========================================= */
+		#container {
+			position: relative;
+			height:100%;
+			width:100%;
 
-#moon {
-
-	position: absolute;
-	height:50%;
-	background-color:#FFA;
-	border-radius:100%;
-	box-shadow: 0 0 50px #FFF;
-
-	left:50%;
-	margin-left:-400px;
-	top:100%;
-	margin-top:-750px;
-	z-index:10;
-
-	transition: box-shadow 5s;
-	animation: moonShine 5s infinite;
-}
-
-@keyframes moonShine {
-	0% { box-shadow: 0 0 20px #FFF; }
-	50% { box-shadow: 0 0 80px #FFF; }
-	100% { box-shadow: 0 0 20px #FFF; }
-}
-
-/* ========================================= */
+			overflow:hidden;
+			background: #101727;
+			background: linear-gradient(to bottom,  #101727 0%,#233645 100%);
+		}
 
 
-.hill {
-	position: absolute;
-	width:200%;
-	margin-left:-50%;
-	border-radius:100%;
-	background-color:#000;
-	top:100%;
-	z-index:20;
-}
+		/* ========================================= */
+
+		#moon {
+
+			position: absolute;
+			height:50%;
+			background-color:#FFA;
+			border-radius:100%;
+			box-shadow: 0 0 50px #FFF;
+
+			left:50%;
+			margin-left:-400px;
+			top:100%;
+			margin-top:-750px;
+			z-index:10;
+
+			transition: box-shadow 5s;
+			animation: moonShine 5s infinite;
+		}
+
+		@keyframes moonShine {
+			0% { box-shadow: 0 0 20px #FFF; }
+			50% { box-shadow: 0 0 80px #FFF; }
+			100% { box-shadow: 0 0 20px #FFF; }
+		}
+
+		/* ========================================= */
+
+
+		.hill {
+			position: absolute;
+			width:200%;
+			margin-left:-50%;
+			border-radius:100%;
+			background-color:#000;
+			top:100%;
+			z-index:20;
+		}
 
 
 
-#ninja {
-	position: absolute;
-	
-	width:300px;
-	height:300px;
-	top:100%;
-	left:50%;
-	
-	transform-origin: 0 0;
-	-webkit-transform-origin: 0 0;
-	z-index:20;
-}
+		#ninja {
+			position: absolute;
+
+			width:300px;
+			height:300px;
+			top:100%;
+			left:50%;
+
+			transform-origin: 0 0;
+			-webkit-transform-origin: 0 0;
+			z-index:20;
+		}
 
 
-#ninja div {
-	position: absolute;
-}
+		#ninja div {
+			position: absolute;
+		}
 
-	#body {
-		font-weight: bold;
-		font-size:80px;
-	}
-	
-	#hat {
-		border: solid 40px #000;
-		background-color:transparent;
-		width:0px;
-		height:0px;
-		
-		border-top:solid transparent 40px;
-		border-left:solid transparent 70px;
-		border-right:solid transparent 70px;
-		
-		top:-83px;
-		left:-35px;
-		
-		transform: rotate(-5deg);
-	}
-	
-	#head {
-		top:-30px;
-		width:50px;
-		height:50px;
-		background-color:#000;
-		border-radius:100%;
-	}
-	
-	#leg_0 {
-		font-weight: bold;
-		font-size:80px;
-		top:43px;
-		left:-2px;
-	}
+			#body {
+				font-weight: bold;
+				font-size:80px;
+			}
 
-	
-	#leg_1 {
-		top: 55px;
-		left:-30px;
-		background-color:#000;
-		width:9px;
-		height:80px;
-		transform: rotate(50deg);
-		-webkit-transform: rotate(50deg);
-	}
-	
-	#arm_0 {
-		top: 35px;
-		left:-38px;
-		background-color:#000;
-		width:55px;
-		height:8px;
-		
-		transform: rotate(-10deg);
-		-webkit-transform: rotate(-10deg);
-		display:none;
-	}
-	
-	
-	#arm_1 {
-		top: -12px;
-		left:-30px;
+			#hat {
+				border: solid 40px #000;
+				background-color:transparent;
+				width:0px;
+				height:0px;
 
-		font-weight: bold;
-		font-size:80px;
-	}
+				border-top:solid transparent 40px;
+				border-left:solid transparent 70px;
+				border-right:solid transparent 70px;
+
+				top:-83px;
+				left:-35px;
+
+				transform: rotate(-5deg);
+			}
+
+			#head {
+				top:-30px;
+				width:50px;
+				height:50px;
+				background-color:#000;
+				border-radius:100%;
+			}
+
+			#leg_0 {
+				font-weight: bold;
+				font-size:80px;
+				top:43px;
+				left:-2px;
+			}
 
 
-/* ========================================= */
+			#leg_1 {
+				top: 55px;
+				left:-30px;
+				background-color:#000;
+				width:9px;
+				height:80px;
+				transform: rotate(50deg);
+				-webkit-transform: rotate(50deg);
+			}
 
-.star:nth-child(n) {
-	--random: 0.5;
-}
+			#arm_0 {
+				top: 35px;
+				left:-38px;
+				background-color:#000;
+				width:55px;
+				height:8px;
 
-.star:nth-child(2n) {
-	--random: 0.6;
-}
-
-.star:nth-child(3n) {
-	--random: 0.7;
-}
-
-.star:nth-child(4n) {
-	--random: 0.8;
-}
-
-.star:nth-child(5n) {
-	--random: 0.9;
-}
-
-.star:nth-child(6n) {
-	--random: 1.0;
-}
+				transform: rotate(-10deg);
+				-webkit-transform: rotate(-10deg);
+				display:none;
+			}
 
 
+			#arm_1 {
+				top: -12px;
+				left:-30px;
 
-.star {
-	opacity: 0.2;
-    color: rgba(255,255,255,0.9);
-    position: absolute;
-    z-index: 1;
-    transition: all 1s;
-    animation: shine calc(var(--random) * 5s) infinite;
-}
-
-@keyframes shine {
-    0% { opacity: 0.2; }
-    50% { opacity: 1; }
-    100% { opacity: 0.2; }
-}
+				font-weight: bold;
+				font-size:80px;
+			}
 
 
-</style>
+		/* ========================================= */
 
+		.star:nth-child(n) {
+			--random: 0.5;
+		}
+
+		.star:nth-child(2n) {
+			--random: 0.6;
+		}
+
+		.star:nth-child(3n) {
+			--random: 0.7;
+		}
+
+		.star:nth-child(4n) {
+			--random: 0.8;
+		}
+
+		.star:nth-child(5n) {
+			--random: 0.9;
+		}
+
+		.star:nth-child(6n) {
+			--random: 1.0;
+		}
+
+
+
+		.star {
+			opacity: 0.2;
+			color: rgba(255,255,255,0.9);
+			position: absolute;
+			z-index: 1;
+			transition: all 1s;
+			animation: shine calc(var(--random) * 5s) infinite;
+		}
+
+		@keyframes shine {
+			0% { opacity: 0.2; }
+			50% { opacity: 1; }
+			100% { opacity: 0.2; }
+		}
+
+
+		</style>
+	</head>
 
 
 <body>
@@ -239,8 +232,8 @@ html, body {
 document.addEventListener('DOMContentLoaded', function() {
 	adjust();
 	window.onresize = function() {
-	adjust();
-};
+		adjust();
+	};
 });
 
 
@@ -260,7 +253,7 @@ function adjust() {
 
 	const ninja = document.querySelector('#ninja')
 	ninja.style.transform='scale('+scale+')';
-	ninja.style.marginTop=280*scale*-1+'px';
+	ninja.style.marginTop = 280*scale*-1+'px';
 }
 
 
@@ -268,16 +261,16 @@ class Star
 {
 
 	constructor() {
-		this.x=Math.random()*document.body.offsetWidth;
-		this.y=Math.random()*document.body.offsetHeight;
+		this.x=Math.random() * 100;
+		this.y=Math.random()* 80;
 	}
 
 	render(container) {
 		this.element=document.createElement('div');
 		this.element.className='star';
-		this.element.innerHTML='*';
-		this.element.style.left=this.x+'px';
-		this.element.style.top=this.y+'px';
+		this.element.innerHTML = '*';
+		this.element.style.left=this.x + '%';
+		this.element.style.top=this.y + '%';
 		container.appendChild(this.element);
 
 	}
@@ -296,4 +289,4 @@ for(let i=0; i<50; i++) {
 
 
 </body>
-</head>
+
