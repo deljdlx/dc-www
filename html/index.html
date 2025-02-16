@@ -35,6 +35,8 @@ html, body {
 }
 
 
+/* ========================================= */
+
 #moon {
 
 	position: absolute;
@@ -42,13 +44,24 @@ html, body {
 	background-color:#FFA;
 	border-radius:100%;
 	box-shadow: 0 0 50px #FFF;
-	
+
 	left:50%;
 	margin-left:-400px;
 	top:100%;
 	margin-top:-750px;
 	z-index:10;
+
+	transition: box-shadow 5s;
+	animation: moonShine 5s infinite;
 }
+
+@keyframes moonShine {
+	0% { box-shadow: 0 0 20px #FFF; }
+	50% { box-shadow: 0 0 80px #FFF; }
+	100% { box-shadow: 0 0 20px #FFF; }
+}
+
+/* ========================================= */
 
 
 .hill {
@@ -150,7 +163,8 @@ html, body {
 	}
 
 
-/* Générer des valeurs différentes avec nth-child */
+/* ========================================= */
+
 .star:nth-child(n) {
 	--random: 0.5;
 }
@@ -287,24 +301,24 @@ function adjust() {
 
 
 
-function moonlight(fade) {
-	if(fade>0) {
-		jQuery('#moon').animate({
-			'boxShadow':  '0 0 20px #FFF'
-		}, 5000, function() {
-			moonlight(fade*-1);
-		});
-	}
-	else {
-		jQuery('#moon').animate({
-			'boxShadow':  '0 0 80px #FFF'
-		}, 5000, function() {
-			moonlight(fade*-1);
-		});
-	}
-}
+// function moonlight(fade) {
+// 	if(fade>0) {
+// 		jQuery('#moon').animate({
+// 			'boxShadow':  '0 0 20px #FFF'
+// 		}, 5000, function() {
+// 			moonlight(fade*-1);
+// 		});
+// 	}
+// 	else {
+// 		jQuery('#moon').animate({
+// 			'boxShadow':  '0 0 80px #FFF'
+// 		}, 5000, function() {
+// 			moonlight(fade*-1);
+// 		});
+// 	}
+// }
 
-moonlight(-1);
+// moonlight(-1);
 
 
 class Star
