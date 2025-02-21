@@ -1,5 +1,6 @@
 services:
   www:
+    container_name: www
     image: nginx:alpine
     restart: always
     env_file:
