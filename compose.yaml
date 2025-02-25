@@ -11,8 +11,10 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=web"
       - "traefik.http.routers.www.rule=Host(\"${DOMAIN}\")"
-      - "traefik.http.routers.www.entrypoints=websecure"
+      - "traefik.http.routers.www.entrypoints=web,websecure"
       - "traefik.http.routers.www.tls.certresolver=myresolver"
+
+      - "traefik.http.routers.www.middlewares=use-nginx-middleware"
     networks:
       - web
 
